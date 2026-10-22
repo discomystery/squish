@@ -6,7 +6,8 @@
   "description": "Local image/video/GIF compressor and converter",
   "scripts": {
     "start": "node server.js",
-    "vendor": "rm -rf public/vendor/ffmpeg && mkdir -p public/vendor/ffmpeg && cp node_modules/@ffmpeg/ffmpeg/dist/esm/*.js public/vendor/ffmpeg/"
+    "vendor": "rm -rf public/vendor/ffmpeg && mkdir -p public/vendor/ffmpeg && cp node_modules/@ffmpeg/ffmpeg/dist/esm/*.js public/vendor/ffmpeg/",
+    "deploy": "git subtree push --prefix public origin gh-pages"
   },
   "dependencies": {
     "express": "^4.22.3",

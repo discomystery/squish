@@ -29,7 +29,7 @@ Settings you change are remembered as defaults. If compressing would make a file
 
 ## Layout
 
-- `public/`: the whole app, deployed as-is to GitHub Pages by `.github/workflows/pages.yml`
+- `public/`: the whole app, published to GitHub Pages with `npm run deploy` (pushes it to the `gh-pages` branch)
   - `shared.js`: ffmpeg command building used by both engines
   - `engine-browser.js` / `engine-native.js`: the in-browser and local-server engines
   - `vendor/ffmpeg/`: the ffmpeg.wasm wrapper (refresh with `npm run vendor`); the wasm core itself loads from jsDelivr
