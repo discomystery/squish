@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Squish</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='3' y='9' width='26' height='14' rx='7' fill='%23e8553d'/></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <span class="blob" aria-hidden="true"></span>
+      <div>
+        <h1>Squish</h1>
+        <p>Compress and convert images, videos and GIFs. <span id="engineMode"></span></p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <label class="drop" id="drop">
+      <input type="file" id="picker" multiple accept="image/jpeg,image/png,image/webp,image/avif,image/tiff,image/gif,video/*,.mkv,.avi" hidden />
+      <span class="drop-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4M7 9l5-5 5 5"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3"/></svg>
+      </span>
+      <strong>Drop files here</strong>
+      <span class="muted">or click to choose · JPG, PNG, WebP, AVIF, GIF, MP4, MOV, WebM…</span>
+    </label>
+
+    <div class="toolbar" id="toolbar" hidden>
+      <span class="muted" id="summary"></span>
+      <div class="toolbar-actions">
+        <button class="btn ghost" id="clear">Clear all</button>
+        <button class="btn ghost" id="downloadAll" disabled>Download all</button>
+        <button class="btn primary" id="runAll">Squish all</button>
+      </div>
+    </div>
+
+    <div class="engine-status" id="engineStatus" hidden>
+      <span class="engine-text"></span>
+      <span class="muted">One-time ~32 MB download, cached afterwards.</span>
+      <div class="progress"><div class="bar"></div></div>
+    </div>
+
+    <ul class="files" id="files"></ul>
+  </main>
+
+  <dialog id="compare">
+    <div class="compare-head">
+      <strong id="compareTitle"></strong>
+      <button class="btn ghost" id="compareClose" aria-label="Close">Close</button>
+    </div>
+    <div class="compare-body">
+      <figure><div class="media" id="compareBefore"></div><figcaption id="compareBeforeCap"></figcaption></figure>
+      <figure><div class="media" id="compareAfter"></div><figcaption id="compareAfterCap"></figcaption></figure>
+    </div>
+  </dialog>
+
+  <template id="cardTpl">
+    <li class="card">
+      <div class="thumb"></div>
+      <div class="body">
+        <div class="title-row">
+          <span class="name"></span>
+          <span class="badge"></span>
+          <span class="meta muted"></span>
+          <button class="icon-btn remove" title="Remove" aria-label="Remove">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+          </button>
+        </div>
+        <div class="ops" role="tablist"></div>
+        <div class="settings"></div>
+        <div class="status">
+          <button class="btn primary go">Squish</button>
+          <div class="progress" hidden><div class="bar"></div></div>
+          <div class="result" hidden></div>
+        </div>
+      </div>
+    </li>
+  </template>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
